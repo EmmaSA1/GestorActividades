@@ -1,17 +1,16 @@
-// Update with your config settings.
-
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
 module.exports = {
-
   development: {
     client: 'mysql2',
     connection: {
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME
+      host: 'emadb.c7iugeqkucqa.us-east-2.rds.amazonaws.com',
+      user: 'admin',
+      password: 'Ema12345',
+      database: 'todoapp', // Reemplaza con el nombre real de tu BD
+      port: 3306,
+      ssl: { rejectUnauthorized: false } // Necesario para conexiones seguras con RDS
     },
     migrations: {
       directory: './db/migrations',
@@ -22,36 +21,23 @@ module.exports = {
     }
   },
 
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  },
-
   production: {
-    client: 'postgresql',
+    client: 'mysql2',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      host: 'emadb.c7iugeqkucqa.us-east-2.rds.amazonaws.com',
+      user: 'admin',
+      password: 'Ema12345',
+      database: 'todoapp', // Reemplaza con el nombre real de tu BD
+      port: 3306,
+      ssl: { rejectUnauthorized: false }
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
+      directory: './db/migrations',
       tableName: 'knex_migrations'
     }
   }
-
 };
